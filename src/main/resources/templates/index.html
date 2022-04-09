@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="30">
+    <title>Sensor Monitoring System 0.1.1</title>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootbox.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Sensor Monitoring System 0.1.1</a>
+</nav>
+<div class="container-fluid">
+    <h3 style="float: left;">Temperature <span class="badge badge-secondary" th:text="${#lists.size(env_temperature)}"></span></h3>
+    <table class="table table-bordered">
+        <thead class="dark">
+            <tr>
+                <th>Sensor ID</th>
+                <th>Value</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="temperature: ${env_temperature}">
+                <td th:text="${temperature.sensorId}"></td>
+                <td th:text="|${temperature.paramValue} C|"></td>
+                <td>
+                    <a th:href="@{|/sensor/invalidate/env_temperature/${temperature.sensorId}|}"
+                       class="btn btn-danger btn-sm active"
+                       style="float: right; margin-bottom: 5px; width: 100%;"
+                       role="button" aria-pressed="true">Invalidate</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 style="float: left;">Humidity <span class="badge badge-secondary" th:text="${#lists.size(env_humidity)}"></span></h3>
+    <table class="table table-bordered">
+        <thead class="dark">
+        <tr>
+            <th>Sensor ID</th>
+            <th>Value</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="humidity: ${env_humidity}">
+            <td th:text="${humidity.sensorId}"></td>
+            <td th:text="|${humidity.paramValue} %|"></td>
+            <td>
+                <a th:href="@{|/sensor/invalidate/env_humidity/${humidity.sensorId}|}"
+                   class="btn btn-danger btn-sm active"
+                   style="float: right; margin-bottom: 5px; width: 100%;"
+                   role="button" aria-pressed="true">Invalidate</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h3 style="float: left;">Pressure <span class="badge badge-secondary" th:text="${#lists.size(env_pressure)}"></span></h3>
+    <table class="table table-bordered">
+        <thead class="dark">
+        <tr>
+            <th>Sensor ID</th>
+            <th>Value</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pressure: ${env_pressure}">
+            <td th:text="${pressure.sensorId}"></td>
+            <td th:text="|${pressure.paramValue} hPa|"></td>
+            <td>
+                <a th:href="@{|/sensor/invalidate/env_pressure/${pressure.sensorId}|}"
+                   class="btn btn-danger btn-sm active"
+                   style="float: right; margin-bottom: 5px; width: 100%;"
+                   role="button" aria-pressed="true">Invalidate
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h3 style="float: left;">Air Quality <span class="badge badge-secondary" th:text="${#lists.size(env_air_quality)}"></span></h3>
+    <table class="table table-bordered">
+        <thead class="dark">
+        <tr>
+            <th>Sensor ID</th>
+            <th>Value</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="air_quality: ${env_air_quality}">
+            <td th:text="${air_quality.sensorId}"></td>
+            <td th:text="${air_quality.paramValue}"></td>
+            <td>
+                <a th:href="@{|/sensor/invalidate/env_air_quality/${air_quality.sensorId}|}"
+                   class="btn btn-danger btn-sm active"
+                   style="float: right; margin-bottom: 5px; width: 100%;"
+                   role="button" aria-pressed="true">Invalidate
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
