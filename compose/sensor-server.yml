@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  sensor-server:
+    image: sensor-server
+    ports:
+      - 9081:9081
