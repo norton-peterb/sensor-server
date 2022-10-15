@@ -1,4 +1,4 @@
-FROM openjdk:13-alpine
+FROM adoptopenjdk/openjdk11
 WORKDIR /app
 COPY application.yml /app/application.yml
 COPY sensor-server.jar /app/sensor-server.jar
